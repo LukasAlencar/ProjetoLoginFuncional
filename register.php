@@ -55,7 +55,7 @@
     <title>Register</title>
 </head>
 <body>
-    <div class="container col-11 col-md-9 mt-4" id="form-container">
+    <div class="container col-11 col-md-9 mt-2" id="form-container">
         <div class="row gx-5" id="row">
             <div class="col-md-6">
                 <h2>Realize o seu Cadastro</h2>

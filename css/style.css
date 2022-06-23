@@ -69,6 +69,10 @@ body{
 }
 
 
+#red{
+    color: red;
+}
+
 @media(min-width:768px){
     div#button.col-12 {
         display: flex;

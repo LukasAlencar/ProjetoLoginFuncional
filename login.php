@@ -18,14 +18,14 @@
         <div class="row align-items-center gx-5">
             <div class="col-md-6 order-md-2">
                 <h2>Faça o login para continuar</h2>
-                <form>
+                <form action="testLogin.php" method="POST">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite o seu Email" >
-                        <label for="email" class="form-label">Digite o seu Email</label>
+                        <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Digite o seu Email" >
+                        <label for="userEmail" class="form-label">Digite o seu Email</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" id="password" name="password" placeholder="Digite a sua senha" class="form-control">
-                        <label for="password" class="form-label">Digite a sua senha</label>
+                        <input type="password" id="userPassword" name="userPassword" placeholder="Digite a sua senha" class="form-control">
+                        <label for="userPassword" class="form-label">Digite a sua senha</label>
                     </div>
                     <row class="row">
                         <div class="col-12" id="button">
@@ -38,7 +38,7 @@
                 <div class="col-12">
                     <img src="img/sign_in.svg" alt="entrar no sistema" class="img-fluid">
                     <div class="col-12" id="link-container">
-                        <a href="register.html">Ainda não tenho cadastro</a>
+                        <a href="register.php">Ainda não tenho cadastro</a>
                     </div>
                 </div>
             </div>

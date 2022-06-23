@@ -1,3 +1,43 @@
+<?php
+
+
+
+    if(isset($_POST['submit'])){
+        /*print_r('Nome: ' . $_POST['name']);
+        print_r('<br>');
+        print_r('Sobrenome: ' . $_POST['lastName']);
+        print_r('<br>');
+        print_r('email: ' . $_POST['email']);
+        print_r('<br>');
+        print_r('senha: ' . $_POST['password']);
+        print_r('<br>');
+        print_r('senha Confirm: ' . $_POST['passwordConfirm']);
+        print_r('<br>');
+        print_r('Terms: ' . $_POST['terms']);
+        print_r('<br>');*/
+
+        
+        include_once('config.php');
+        $userName = $_POST['name'];
+        $userLastName = $_POST['lastName'];
+        $userEmail = $_POST['email'];
+        $userPassword = $_POST['password'];
+        $userPasswordConfirm = $_POST['passwordConfirm'];
+        $userTerms = $_POST['terms'];
+        $msg = isset($_POST['msg']);
+
+        if($userName != '' && $userLastName != '' && $userEmail != '' && $userPassword != '' && $userPasswordConfirm != '' && $userTerms == "on" && $userPassword == $userPasswordConfirm){
+            $result = mysqli_query($conexao, "INSERT INTO users(username, userLastName, userEmail, userPassword) VALUES('$userName', '$userLastName','$userEmail', '$userPassword')");
+        }else{
+            
+        }
+
+       
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,6 +48,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!--JS CDN BOOTSTRAP-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous" defer></script>
+    <!--Script Local-->
+    <script src="script/script.js"></script>
     <!--Css Local-->
     <link rel="stylesheet" href="css/style.css">
     <title>Register</title>
@@ -17,7 +59,7 @@
         <div class="row gx-5" id="row">
             <div class="col-md-6">
                 <h2>Realize o seu Cadastro</h2>
-                <form class="row">
+                <form action="register.php" method="POST" class="row">
                     <div class="col-5 form-floating mb-3 ">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required>
                         <label for="name" class="form-label">Nome:</label>
@@ -36,8 +78,16 @@
                     </div>
                     <div class="col-12 form-floating mb-3 ">
                         <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirme a sua senha" required>
-                        <label for="passwordConfirm" class="form-label">Confirme a sua senha:</label>
+                        <label for="passwordConfirm" id="passwordConfirmLabel" class="form-label">Confirme a sua senha:</label>
+                        <p><?php 
+                            
+                                if($userPassword != $userPasswordConfirm)
+                                echo "<p style='color:red';>As senhas não correspondem</p>";
+                        
+                        ?></p>
+                        
                     </div>
+
                     <div class="col-12">
                         <input class="form-check-input" type="checkbox" name="terms" id="terms" required>
                         <label for="terms" class="form-check-label">Aceita os nossos <a href="#">termos de serviço</a>?</label>
@@ -47,7 +97,7 @@
                         <label for="newsLetter" class="form-check-label">Deseja receber novidades no seu email? </label>
                     </div>
                     <div class="col-12 mt-3" id="button">
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <input type="submit" value="Cadastrar" name="submit" class="btn btn-primary">
                     </div>
             </form>
             </div>
@@ -57,7 +107,7 @@
                         <img src="img/hello.svg" alt="Tela de Registro" class="img-fluid">
                     </div>
                     <div class="col-12" id="link-container">
-                        <a href="login.html">Já possuo uma conta</a>
+                        <a href="login.php">Já possuo uma conta</a>
                     </div>
 
                 </div>

@@ -120,10 +120,14 @@ body{
 .row.align-items-center{
     align-content: center;
     height: 100%;
-    padding: 0px 0;
+    padding: 25px 0;
 }
 
 #link-container{
     text-align: center;
     padding-top: 50px;
+}
+
+.reda{
+    color: red;
 }
